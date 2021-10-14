@@ -1,0 +1,12 @@
+.container {
+	display: flex;
+	position: absolute;
+	left: 100px;
+	top: 100px;
+}
+
+.bar {
+	width: 2px;
+	background-color: royalblue;
+	margin: 0 1px;
+}
