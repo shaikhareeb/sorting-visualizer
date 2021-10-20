@@ -4,6 +4,9 @@ import {
 	bubbleSortAni,
 	selectionSortAni,
 	insertionSortAni,
+	mergeSortAni,
+	quickSortAni,
+	heapSortAni,
 } from "./Algorithms";
 
 const SortingVisualizer = () => {
@@ -15,7 +18,7 @@ const SortingVisualizer = () => {
 
 	const resetArr = useCallback(() => {
 		const arr = [];
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 175; i++) {
 			arr.push(randomVal(1, 500));
 		}
 		return arr;
@@ -48,7 +51,6 @@ const SortingVisualizer = () => {
 		}
 	};
 
-	console.log(values);
 	const selectionSort = () => {
 		const ani = selectionSortAni(values);
 		for (let i = 0; i < ani.length; i++) {
@@ -89,7 +91,7 @@ const SortingVisualizer = () => {
 				setTimeout(() => {
 					firstBarStyle.backgroundColor = colour;
 					secondBarStyle.backgroundColor = colour;
-				}, i * 200);
+				}, i * 1);
 			} else {
 				setTimeout(() => {
 					const [firstBarIdx, firstBarHeight, secondBarIdx, secondBarHeight] =
@@ -98,8 +100,62 @@ const SortingVisualizer = () => {
 					firstBarStyle.height = `${firstBarHeight}px`;
 					const secondBarStyle = bars[secondBarIdx].style;
 					secondBarStyle.height = `${secondBarHeight}px`;
-				}, i * 200);
+				}, i * 1);
 			}
+		}
+	};
+
+	const mergeSort = () => {
+		const ani = mergeSortAni(values);
+		for (let i = 0; i < ani.length; i++) {
+			const bars = document.getElementsByClassName("bar");
+			const isColour = i % 3 !== 2;
+			if (isColour) {
+				const [firstBarIdx, secondBarIdx] = ani[i];
+				const firstBarStyle = bars[firstBarIdx].style;
+				const secondBarStyle = bars[secondBarIdx].style;
+				const colour = i % 3 === 0 ? "red" : "royalblue";
+				setTimeout(() => {
+					firstBarStyle.backgroundColor = colour;
+					secondBarStyle.backgroundColor = colour;
+				}, i * 10);
+			} else {
+				setTimeout(() => {
+					const [firstBarIdx, firstBarHeight] = ani[i];
+					const firstBarStyle = bars[firstBarIdx].style;
+					firstBarStyle.height = `${firstBarHeight}px`;
+				}, i * 10);
+			}
+		}
+	};
+
+	const quickSort = () => {
+		const ani = quickSortAni(values);
+		for (let i = 0; i < ani.length; i++) {
+			const bars = document.getElementsByClassName("bar");
+			setTimeout(() => {
+				const [firstBarIdx, firstBarHeight, secondBarIdx, secondBarHeight] =
+					ani[i];
+				const firstBarStyle = bars[firstBarIdx].style;
+				firstBarStyle.height = `${firstBarHeight}px`;
+				const secondBarStyle = bars[secondBarIdx].style;
+				secondBarStyle.height = `${secondBarHeight}px`;
+			}, i * 10);
+		}
+	};
+
+	const heapSort = () => {
+		const ani = heapSortAni(values);
+		for (let i = 0; i < ani.length; i++) {
+			const bars = document.getElementsByClassName("bar");
+			setTimeout(() => {
+				const [firstBarIdx, firstBarHeight, secondBarIdx, secondBarHeight] =
+					ani[i];
+				const firstBarStyle = bars[firstBarIdx].style;
+				firstBarStyle.height = `${firstBarHeight}px`;
+				const secondBarStyle = bars[secondBarIdx].style;
+				secondBarStyle.height = `${secondBarHeight}px`;
+			}, i * 10);
 		}
 	};
 
@@ -118,6 +174,9 @@ const SortingVisualizer = () => {
 			<button onClick={() => bubbleSort()}>Bubble Sort</button>
 			<button onClick={() => selectionSort()}>Selection Sort</button>
 			<button onClick={() => insertionSort()}>Insertion Sort</button>
+			<button onClick={() => mergeSort()}>Merge Sort</button>
+			<button onClick={() => quickSort()}>Quick Sort</button>
+			<button onClick={() => heapSort()}>Heap Sort</button>
 		</>
 	);
 };
