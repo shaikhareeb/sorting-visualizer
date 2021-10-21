@@ -18,8 +18,8 @@ const SortingVisualizer = () => {
 
 	const resetArr = useCallback(() => {
 		const arr = [];
-		for (let i = 0; i < 175; i++) {
-			arr.push(randomVal(1, 500));
+		for (let i = 0; i < 188; i++) {
+			arr.push(randomVal(1, 600));
 		}
 		return arr;
 	}, []);
@@ -33,7 +33,7 @@ const SortingVisualizer = () => {
 				const [firstBarIdx, secondBarIdx] = ani[i];
 				const firstBarStyle = bars[firstBarIdx].style;
 				const secondBarStyle = bars[secondBarIdx].style;
-				const colour = i % 3 === 0 ? "red" : "royalblue";
+				const colour = i % 3 === 0 ? "#ff595e" : "#a1d6e2";
 				setTimeout(() => {
 					firstBarStyle.backgroundColor = colour;
 					secondBarStyle.backgroundColor = colour;
@@ -60,7 +60,7 @@ const SortingVisualizer = () => {
 				const [firstBarIdx, secondBarIdx] = ani[i];
 				const firstBarStyle = bars[firstBarIdx].style;
 				const secondBarStyle = bars[secondBarIdx].style;
-				const colour = ani[i].length === 2 ? "red" : "royalblue";
+				const colour = ani[i].length === 2 ? "#ff595e" : "#a1d6e2";
 				setTimeout(() => {
 					firstBarStyle.backgroundColor = colour;
 					secondBarStyle.backgroundColor = colour;
@@ -87,7 +87,7 @@ const SortingVisualizer = () => {
 				const [firstBarIdx, secondBarIdx] = ani[i];
 				const firstBarStyle = bars[firstBarIdx].style;
 				const secondBarStyle = bars[secondBarIdx].style;
-				const colour = ani[i].length === 2 ? "red" : "royalblue";
+				const colour = ani[i].length === 2 ? "#ff595e" : "#a1d6e2";
 				setTimeout(() => {
 					firstBarStyle.backgroundColor = colour;
 					secondBarStyle.backgroundColor = colour;
@@ -114,7 +114,7 @@ const SortingVisualizer = () => {
 				const [firstBarIdx, secondBarIdx] = ani[i];
 				const firstBarStyle = bars[firstBarIdx].style;
 				const secondBarStyle = bars[secondBarIdx].style;
-				const colour = i % 3 === 0 ? "red" : "royalblue";
+				const colour = i % 3 === 0 ? "#ff595e" : "#a1d6e2";
 				setTimeout(() => {
 					firstBarStyle.backgroundColor = colour;
 					secondBarStyle.backgroundColor = colour;
@@ -165,18 +165,37 @@ const SortingVisualizer = () => {
 
 	return (
 		<>
+			<header>
+				<h1>Sorting Algorithm Visualizer</h1>
+				<div className="button-container">
+					<button onClick={() => setValues(resetArr)}>New Array</button>
+					<div>
+						<button className="sort-buttons" onClick={() => bubbleSort()}>
+							Bubble Sort
+						</button>
+						<button className="sort-buttons" onClick={() => selectionSort()}>
+							Selection Sort
+						</button>
+						<button className="sort-buttons" onClick={() => insertionSort()}>
+							Insertion Sort
+						</button>
+						<button className="sort-buttons" onClick={() => mergeSort()}>
+							Merge Sort
+						</button>
+						<button className="sort-buttons" onClick={() => quickSort()}>
+							Quick Sort
+						</button>
+						<button className="sort-buttons" onClick={() => heapSort()}>
+							Heap Sort
+						</button>
+					</div>
+				</div>
+			</header>
 			<div className="container">
 				{values.map((val, idx) => (
 					<div style={{ height: `${val}px` }} className="bar" key={idx}></div>
 				))}
 			</div>
-			<button onClick={() => setValues(resetArr)}>New Array</button>
-			<button onClick={() => bubbleSort()}>Bubble Sort</button>
-			<button onClick={() => selectionSort()}>Selection Sort</button>
-			<button onClick={() => insertionSort()}>Insertion Sort</button>
-			<button onClick={() => mergeSort()}>Merge Sort</button>
-			<button onClick={() => quickSort()}>Quick Sort</button>
-			<button onClick={() => heapSort()}>Heap Sort</button>
 		</>
 	);
 };

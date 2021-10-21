@@ -5,8 +5,33 @@
 	top: 100px;
 }
 
+header {
+	text-align: center;
+	color: white;
+	border-bottom: 2px solid;
+	border-bottom-left-radius: 7%;
+	border-bottom-right-radius: 7%;
+	background-color: rgb(179, 49, 49);
+	padding: 7px;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.sort-buttons {
+	margin-right: 12px;
+}
+
 .bar {
 	width: 5px;
-	background-color: royalblue;
+	background-color: #a1d6e2;
 	margin: 0 1px;
+}
+
+button {
+	border: none;
+	border-radius: 20%;
+	margin-bottom: 6px;
 }
